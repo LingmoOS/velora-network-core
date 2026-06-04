@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.23)
 
 set(VERSION "2.0.18" CACHE STRING "define project version")
 project(dde-network-core
-  VERSION ${VERSION}
+  VERSION "2.0.18"
   DESCRIPTION "DDE Network Core"
   HOMEPAGE_URL "https://github.com/linuxdeepin/dde-network-core"
   LANGUAGES CXX C
