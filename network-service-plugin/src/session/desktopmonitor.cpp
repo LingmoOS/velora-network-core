@@ -55,7 +55,7 @@ void DesktopMonitor::init()
     serviceWatcher->setConnection(QDBusConnection::sessionBus());
     serviceWatcher->addWatchedService(SESSION_MANAG_SERVICE);
     connect(serviceWatcher, &QDBusServiceWatcher::serviceRegistered, this, &DesktopMonitor::onServiceRegistered);
-    QDBusConnection::sessionBus().connect("com.deepin.SessionManager", "/com/deepin/SessionManager", "com.deepin.SessionManager",
+    QDBusConnection::sessionBus().connect("com.lingmo.SessionManager", "/com/lingmo/SessionManager", "com.lingmo.SessionManager",
                                           "PrepareLogout", this, SLOT(onPrepareLogout()));
 }
 

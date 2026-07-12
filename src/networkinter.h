@@ -19,7 +19,7 @@ class NetworkInter : public Dtk::Core::DDBusInterface
 {
     Q_OBJECT
 public:
-    static inline const char *staticInterfaceName() { return "org.deepin.dde.Network1"; }
+    static inline const char *staticInterfaceName() { return "org.lingmo.Network1"; }
 
 public:
     explicit NetworkInter(const QString &service, const QString &path, const QDBusConnection &connection, QObject *parent = 0);

@@ -29,8 +29,8 @@
 using namespace accountnetwork::sessionservice;
 
 #define SYSTEMNETWORKSERVICE "org.deepin.dde.Network1"
-#define SYSTEMNETWORKPATH "/org/deepin/service/SystemNetwork"
-#define SYSTEMNETWORKINTERFACE "org.deepin.service.AccountSystemNetwork"
+#define SYSTEMNETWORKPATH "/org/lingmo/service/SystemNetwork"
+#define SYSTEMNETWORKINTERFACE "org.lingmo.service.AccountSystemNetwork"
 
 #define NETWORKMANAGERINTERFACE "org.freedesktop.NetworkManager"
 

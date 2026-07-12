@@ -11,17 +11,17 @@
 #include <QDBusPendingReply>
 #include <QDebug>
 
-const QString NetworkService = QStringLiteral("org.deepin.dde.Network1");
-const QString NetworkPath = QStringLiteral("/org/deepin/dde/Network1");
-const QString NetworkInterface = QStringLiteral("org.deepin.dde.Network1");
+const QString NetworkService = QStringLiteral("org.lingmo.Network1");
+const QString NetworkPath = QStringLiteral("/org/lingmo/Network1");
+const QString NetworkInterface = QStringLiteral("org.lingmo.Network1");
 
-const QString ProxyChainsService = QStringLiteral("org.deepin.dde.Network1");
-const QString ProxyChainsPath = QStringLiteral("/org/deepin/dde/Network1/ProxyChains");
-const QString ProxyChainsInterface = QStringLiteral("org.deepin.dde.Network1.ProxyChains");
+const QString ProxyChainsService = QStringLiteral("org.lingmo.Network1");
+const QString ProxyChainsPath = QStringLiteral("/org/lingmo/Network1/ProxyChains");
+const QString ProxyChainsInterface = QStringLiteral("org.lingmo.Network1.ProxyChains");
 
-const QString AirplaneModeService = QStringLiteral("org.deepin.dde.AirplaneMode1");
-const QString AirplaneModePath = QStringLiteral("/org/deepin/dde/AirplaneMode1");
-const QString AirplaneModeInterface = QStringLiteral("org.deepin.dde.AirplaneMode1");
+const QString AirplaneModeService = QStringLiteral("org.lingmo.AirplaneMode1");
+const QString AirplaneModePath = QStringLiteral("/org/lingmo/AirplaneMode1");
+const QString AirplaneModeInterface = QStringLiteral("org.lingmo.AirplaneMode1");
 
 const QString PropertiesInterface = QStringLiteral("org.freedesktop.DBus.Properties");
 const QString PropertiesChanged = QStringLiteral("PropertiesChanged");
@@ -116,7 +116,7 @@ bool NetworkDBusProxy::enabled()
 
 void NetworkDBusProxy::ShowPage(const QString &url)
 {
-    QDBusMessage message = QDBusMessage::createMethodCall("org.deepin.dde.ControlCenter1", "/org/deepin/dde/ControlCenter1", "org.deepin.dde.ControlCenter1", "ShowPage");
+    QDBusMessage message = QDBusMessage::createMethodCall("org.lingmo.ControlCenter1", "/org/lingmo/ControlCenter1", "org.lingmo.ControlCenter1", "ShowPage");
     message << QVariant::fromValue(url);
     QDBusConnection::sessionBus().asyncCall(message);
 }

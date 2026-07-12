@@ -64,7 +64,7 @@ void NetworkController::initNetworkStatus()
     serviceWatcher->setConnection(QDBusConnection::systemBus());
     serviceWatcher->addWatchedService("org.deepin.dde.Network1");
     connect(serviceWatcher, &QDBusServiceWatcher::serviceRegistered, this, [ this ](const QString &service) {
-        if (service != "org.deepin.dde.Network1")
+        if (service != "org.lingmo.Network1")
             return;
 
         // 启动后过3秒再获取连接状态，因为在刚启动的时候，获取的状态不是正确的
@@ -74,8 +74,8 @@ void NetworkController::initNetworkStatus()
 
     if (m_checkIpConflicted) {
         // 如果当前需要处理IP冲突，则直接获取信号连接方式即可
-        QDBusConnection::systemBus().connect("org.deepin.dde.Network1", "/org/deepin/service/SystemNetwork",
-                                    "org.deepin.service.SystemNetwork", "IpConflictChanged", m_processer, SLOT(onIpConflictChanged(const QString &, const QString &, bool)));
+        QDBusConnection::systemBus().connect("org.lingmo.Network1", "/org/lingmo/service/SystemNetwork",
+                                    "org.lingmo.service.SystemNetwork", "IpConflictChanged", m_processer, SLOT(onIpConflictChanged(const QString &, const QString &, bool)));
         checkIpConflicted(m_processer->devices());
     }
 }
@@ -85,8 +85,8 @@ void NetworkController::checkIpConflicted(const QList<NetworkDeviceBase *> &devi
     if (!m_checkIpConflicted)
         return ;
 
-    static QDBusInterface dbusInter("org.deepin.dde.Network1", "/org/deepin/service/SystemNetwork",
-                             "org.deepin.service.SystemNetwork", QDBusConnection::systemBus());
+    static QDBusInterface dbusInter("org.lingmo.Network1", "/org/lingmo/service/SystemNetwork",
+                             "org.lingmo.service.SystemNetwork", QDBusConnection::systemBus());
     // 如果需要处理IP冲突，依次检测每个设备的IP是否冲突
     for (NetworkDeviceBase *device : devices) {
         QDBusReply<bool> reply = dbusInter.call("IpConflicted", device->path());

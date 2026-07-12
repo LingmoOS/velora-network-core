@@ -140,7 +140,7 @@ bool NetManagerThreadPrivate::CheckPasswordValid(const QString &key, const QStri
 
 void NetManagerThreadPrivate::getNetCheckAvailableFromDBus()
 {
-    QDBusMessage message = QDBusMessage::createMethodCall("com.deepin.defender.netcheck", "/com/deepin/defender/netcheck", "org.freedesktop.DBus.Properties", "Get");
+    QDBusMessage message = QDBusMessage::createMethodCall("com.lingmo.defender.netcheck", "/com/lingmo/defender/netcheck", "org.freedesktop.DBus.Properties", "Get");
     message << "com.deepin.defender.netcheck"
             << "Availabled";
     QDBusConnection::systemBus().callWithCallback(message, this, SLOT(updateNetCheckAvailabled(QDBusVariant)));
@@ -148,14 +148,14 @@ void NetManagerThreadPrivate::getNetCheckAvailableFromDBus()
 
 void NetManagerThreadPrivate::getAirplaneModeEnabled()
 {
-    QDBusMessage message = QDBusMessage::createMethodCall("org.deepin.dde.AirplaneMode1", "/org/deepin/dde/AirplaneMode1", "org.freedesktop.DBus.Properties", "GetAll");
+    QDBusMessage message = QDBusMessage::createMethodCall("org.lingmo.AirplaneMode1", "/org/lingmo/AirplaneMode1", "org.freedesktop.DBus.Properties", "GetAll");
     message << "org.deepin.dde.AirplaneMode1";
     QDBusConnection::systemBus().callWithCallback(message, this, SLOT(onAirplaneModePropertiesChanged(QVariantMap)));
 }
 
 void NetManagerThreadPrivate::setAirplaneModeEnabled(bool enabled)
 {
-    QDBusMessage message = QDBusMessage::createMethodCall("org.deepin.dde.AirplaneMode1", "/org/deepin/dde/AirplaneMode1", "org.deepin.dde.AirplaneMode1", "Enable");
+    QDBusMessage message = QDBusMessage::createMethodCall("org.lingmo.AirplaneMode1", "/org/lingmo/AirplaneMode1", "org.lingmo.AirplaneMode1", "Enable");
     message << enabled;
     QDBusConnection::systemBus().callWithCallback(message, this, SLOT(getAirplaneModeEnabled()));
 }
@@ -502,15 +502,15 @@ void NetManagerThreadPrivate::doInit()
     m_netCheckAvailable = false;
     getNetCheckAvailableFromDBus();
 
-    QDBusConnection::systemBus().connect("com.deepin.defender.netcheck", "/com/deepin/defender/netcheck", "org.freedesktop.DBus.Properties", "PropertiesChanged", this, SLOT(onNetCheckPropertiesChanged(QString, QVariantMap, QStringList)));
+    QDBusConnection::systemBus().connect("com.lingmo.defender.netcheck", "/com/lingmo/defender/netcheck", "org.freedesktop.DBus.Properties", "PropertiesChanged", this, SLOT(onNetCheckPropertiesChanged(QString, QVariantMap, QStringList)));
     QDBusConnection::systemBus().connect("org.freedesktop.login1", "/org/freedesktop/login1", "org.freedesktop.login1.Manager", "PrepareForSleep", this, SLOT(onPrepareForSleep(bool)));
 
 
     // 只有配置为promp和openandpromp的情况下，才会给出提示
     if (ConfigSetting::instance()->supportPortalPromp()) {
-        QDBusConnection::systemBus().connect("org.deepin.dde.Network1",
-                                             "/org/deepin/service/SystemNetwork",
-                                             "org.deepin.service.SystemNetwork",
+        QDBusConnection::systemBus().connect("org.lingmo.Network1",
+                                             "/org/lingmo/service/SystemNetwork",
+                                             "org.lingmo.service.SystemNetwork",
                                              "PortalDetected",
                                              this,
                                              SLOT(onPortalDetected(const QString &)));
@@ -549,9 +549,9 @@ void NetManagerThreadPrivate::doInit()
         m_airplaneModeEnabled = false;
         getAirplaneModeEnabled();
         connect(ConfigSetting::instance(), &ConfigSetting::enableAirplaneModeChanged, this, &NetManagerThreadPrivate::getAirplaneModeEnabled);
-        QDBusConnection::systemBus().connect("org.deepin.dde.Bluetooth1", "/org/deepin/dde/Bluetooth1", "org.deepin.dde.Bluetooth1", "AdapterAdded", this, SLOT(getAirplaneModeEnabled()));
-        QDBusConnection::systemBus().connect("org.deepin.dde.Bluetooth1", "/org/deepin/dde/Bluetooth1", "org.deepin.dde.Bluetooth1", "AdapterRemoved", this, SLOT(getAirplaneModeEnabled()));
-        QDBusConnection::systemBus().connect("org.deepin.dde.AirplaneMode1", "/org/deepin/dde/AirplaneMode1", "org.freedesktop.DBus.Properties", "PropertiesChanged", this, SLOT(onAirplaneModeEnabledPropertiesChanged(QString, QVariantMap, QStringList)));
+        QDBusConnection::systemBus().connect("org.lingmo.Bluetooth1", "/org/lingmo/Bluetooth1", "org.lingmo.Bluetooth1", "AdapterAdded", this, SLOT(getAirplaneModeEnabled()));
+        QDBusConnection::systemBus().connect("org.lingmo.Bluetooth1", "/org/lingmo/Bluetooth1", "org.lingmo.Bluetooth1", "AdapterRemoved", this, SLOT(getAirplaneModeEnabled()));
+        QDBusConnection::systemBus().connect("org.lingmo.AirplaneMode1", "/org/lingmo/AirplaneMode1", "org.freedesktop.DBus.Properties", "PropertiesChanged", this, SLOT(onAirplaneModeEnabledPropertiesChanged(QString, QVariantMap, QStringList)));
     }
     // DSL
     if (m_flags.testFlags(NetType::NetManagerFlag::Net_DSL)) {
@@ -790,7 +790,7 @@ void NetManagerThreadPrivate::doGotoControlCenter(const QString &page)
 {
     if (!m_enabled)
         return;
-    QDBusMessage message = QDBusMessage::createMethodCall("org.deepin.dde.ControlCenter1", "/org/deepin/dde/ControlCenter1", "org.deepin.dde.ControlCenter1", "ShowPage");
+    QDBusMessage message = QDBusMessage::createMethodCall("org.lingmo.ControlCenter1", "/org/lingmo/ControlCenter1", "org.lingmo.ControlCenter1", "ShowPage");
     message << "network" << page;
     QDBusConnection::sessionBus().asyncCall(message);
     Q_EMIT toControlCenter();
@@ -801,7 +801,7 @@ void NetManagerThreadPrivate::doGotoSecurityTools(const QString &page)
     if (!m_enabled)
         return;
 
-    QDBusMessage message = QDBusMessage::createMethodCall("com.deepin.defender.hmiscreen", "/com/deepin/defender/hmiscreen", "com.deepin.defender.hmiscreen", "ShowPage");
+    QDBusMessage message = QDBusMessage::createMethodCall("com.lingmo.defender.hmiscreen", "/com/lingmo/defender/hmiscreen", "com.lingmo.defender.hmiscreen", "ShowPage");
     message << "securitytools" << page;
     QDBusConnection::sessionBus().asyncCall(message);
 }
@@ -868,7 +868,7 @@ bool NetManagerThreadPrivate::supportAirplaneMode() const
     }
 
     // 蓝牙和无线网络,只要有其中一个就允许显示飞行模式
-    QDBusInterface inter("org.deepin.dde.Bluetooth1", "/org/deepin/dde/Bluetooth1", "org.deepin.dde.Bluetooth1", QDBusConnection::systemBus());
+    QDBusInterface inter("org.lingmo.Bluetooth1", "/org/lingmo/Bluetooth1", "org.lingmo.Bluetooth1", QDBusConnection::systemBus());
     if (inter.isValid()) {
         QDBusReply<QString> reply = inter.call("GetAdapters");
         QString replyStr = reply.value();
@@ -1867,7 +1867,7 @@ bool NetManagerThreadPrivate::toShowPage()
             }
             page += index;
         }
-        QDBusMessage message = QDBusMessage::createMethodCall("org.deepin.dde.ControlCenter1", "/org/deepin/dde/ControlCenter1", "org.deepin.dde.ControlCenter1", "ShowPage");
+        QDBusMessage message = QDBusMessage::createMethodCall("org.lingmo.ControlCenter1", "/org/lingmo/ControlCenter1", "org.lingmo.ControlCenter1", "ShowPage");
         message << page;
         QDBusConnection::sessionBus().asyncCall(message);
         clearShowPageCmd();
@@ -1889,7 +1889,7 @@ bool NetManagerThreadPrivate::toShowPage()
                 for (auto ap : wDev->accessPointItems()) {
                     if (ap->ssid() == ssid) {
                         doGetConnectInfo(apID(ap), NetType::WirelessItem, { { "hidden", hidden } });
-                        QDBusMessage message = QDBusMessage::createMethodCall("org.deepin.dde.ControlCenter1", "/org/deepin/dde/ControlCenter1", "org.deepin.dde.ControlCenter1", "Show");
+                        QDBusMessage message = QDBusMessage::createMethodCall("org.lingmo.ControlCenter1", "/org/lingmo/ControlCenter1", "org.lingmo.ControlCenter1", "Show");
                         QDBusConnection::sessionBus().asyncCall(message);
                         clearShowPageCmd();
                         return true;
@@ -3225,7 +3225,7 @@ void NetManagerThreadPrivate::checkPoratal()
         return;
 
     // 获取portal网页
-    QDBusInterface dbusInter("org.deepin.dde.Network1", "/org/deepin/service/SystemNetwork", "org.deepin.service.SystemNetwork", QDBusConnection::systemBus());
+    QDBusInterface dbusInter("org.lingmo.Network1", "/org/lingmo/service/SystemNetwork", "org.lingmo.service.SystemNetwork", QDBusConnection::systemBus());
     onPortalDetected(dbusInter.property("PortalUrl").toString());
 }
 

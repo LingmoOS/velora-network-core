@@ -11,8 +11,8 @@
 #include "configsetting.h"
 
 #define SYSTEM_NETWORK_SERVICE "org.deepin.dde.Network1"
-#define SYSTEM_NETWORK_PATH "/org/deepin/service/SystemNetwork"
-#define SYSTEM_NETWORK_INTERFACE "org.deepin.service.SystemNetwork"
+#define SYSTEM_NETWORK_PATH "/org/lingmo/service/SystemNetwork"
+#define SYSTEM_NETWORK_INTERFACE "org.lingmo.service.SystemNetwork"
 
 using namespace dde::network;
 

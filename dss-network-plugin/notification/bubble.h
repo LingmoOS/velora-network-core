@@ -13,7 +13,7 @@
 #include <memory>
 // #include <com_deepin_sessionmanager.h>
 
-// using UserInter = com::deepin::SessionManager;
+// using UserInter = com::lingmo::SessionManager;
 
 DWIDGET_USE_NAMESPACE
 

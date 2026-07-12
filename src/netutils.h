@@ -30,7 +30,7 @@ namespace network {
 // wifi6的标记
 #define AP_FLAGS_HE 0x10
 
-// using NetworkInter = com::deepin::daemon::Network;
+// using NetworkInter = com::lingmo::daemon::Network;
 
 Connectivity connectivityValue(uint sourceConnectivity);
 DeviceStatus convertDeviceStatus(int sourceDeviceStatus);

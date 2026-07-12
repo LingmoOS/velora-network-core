@@ -443,7 +443,7 @@ void NetworkThread::onStatusChanged(NetworkManager::Status status)
 
 bool NetworkThread::airplaneWifiEnabled()
 {
-    QDBusMessage msg = QDBusMessage::createMethodCall("org.deepin.dde.AirplaneMode1", "/org/deepin/dde/AirplaneMode1", "org.freedesktop.DBus.Properties", "Get");
+    QDBusMessage msg = QDBusMessage::createMethodCall("org.lingmo.AirplaneMode1", "/org/lingmo/AirplaneMode1", "org.freedesktop.DBus.Properties", "Get");
     msg << "org.deepin.dde.AirplaneMode1" << "WifiEnabled";
     QDBusPendingReply<QDBusVariant> reply = QDBusConnection::systemBus().asyncCall(msg);
     reply.waitForFinished();

@@ -1,3 +1,9 @@
+velora-network-core (2.0.90.lingmo.1) unstable; urgency=medium
+
+  * Lingmo namespace migration.
+
+ -- Lingmo OS Team <team@lingmo.org>  Sun, 12 Jul 2026 23:11:19 +0800
+
 velora-network-core (2.0.89.lingmo.2) unstable; urgency=medium
 
   * new release for Lingmo OS.

@@ -57,7 +57,7 @@ void NetworkManagerProcesser::initConnections()
     connect(NetworkManager::notifier(), &Notifier::deviceAdded, this, &NetworkManagerProcesser::onDeviceAdded);
     connect(NetworkManager::notifier(), &Notifier::deviceRemoved, this, &NetworkManagerProcesser::onDeviceRemove);
     connect(NetworkManager::notifier(), &Notifier::connectivityChanged, this, &NetworkManagerProcesser::onConnectivityChanged);
-    QDBusConnection::systemBus().connect("org.deepin.dde.Network1", "/org/deepin/dde/Network1", "org.deepin.dde.Network1", "DeviceEnabled", this, SLOT(onDeviceEnabledChanged(QDBusObjectPath, bool)));
+    QDBusConnection::systemBus().connect("org.lingmo.Network1", "/org/lingmo/Network1", "org.lingmo.Network1", "DeviceEnabled", this, SLOT(onDeviceEnabledChanged(QDBusObjectPath, bool)));
 }
 
 QList<NetworkDeviceBase *> NetworkManagerProcesser::devices()

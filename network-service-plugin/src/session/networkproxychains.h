@@ -18,7 +18,7 @@ class NetworkStateHandler;
 class NetworkProxyChains : public QObject, protected QDBusContext
 {
     Q_OBJECT
-    Q_CLASSINFO("D-Bus Interface", "org.deepin.dde.Network1.ProxyChains")
+    Q_CLASSINFO("D-Bus Interface", "org.lingmo.Network1.ProxyChains")
     Q_PROPERTY(bool Enabled READ Enabled)
     Q_PROPERTY(QString IP READ IP)
     Q_PROPERTY(QString Password READ Password)

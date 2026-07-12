@@ -100,7 +100,7 @@ void QTDBusSpyHook(const QDBusMessage &msg)
                                                              realPath,
                                                              args.at(0).toString(),
                                                              args.at(1).toString())) {
-                QDBusMessage reply = msg.createErrorReply("com.deepin.service.Permission.Deny",
+                QDBusMessage reply = msg.createErrorReply("com.lingmo.service.Permission.Deny",
                                                           "The call is deny");
                 ServiceQtDBus *srv = qobject_cast<ServiceQtDBus *>(serviceObj);
                 if (srv) {
@@ -117,7 +117,7 @@ void QTDBusSpyHook(const QDBusMessage &msg)
                                                        msg.interface(),
                                                        msg.member())) {
             QDBusMessage reply =
-                    msg.createErrorReply("com.deepin.service.Permission.Deny", "The call is deny2");
+                    msg.createErrorReply("com.lingmo.service.Permission.Deny", "The call is deny2");
             ServiceQtDBus *srv = qobject_cast<ServiceQtDBus *>(serviceObj);
             if (srv) {
                 // srv->qDbusConnection().send(reply);
@@ -180,7 +180,7 @@ int QTDBusHook(const QString &baseService, const QDBusMessage &msg)
                                                              realPath,
                                                              args.at(0).toString(),
                                                              args.at(1).toString())) {
-                QDBusMessage reply = msg.createErrorReply("com.deepin.service.Permission.Deny",
+                QDBusMessage reply = msg.createErrorReply("com.lingmo.service.Permission.Deny",
                                                           "The call is deny");
                 ServiceQtDBus *srv = qobject_cast<ServiceQtDBus *>(serviceObj);
                 if (srv) {
@@ -197,7 +197,7 @@ int QTDBusHook(const QString &baseService, const QDBusMessage &msg)
                                                        msg.interface(),
                                                        msg.member())) {
             QDBusMessage reply =
-                    msg.createErrorReply("com.deepin.service.Permission.Deny", "The call is deny2");
+                    msg.createErrorReply("com.lingmo.service.Permission.Deny", "The call is deny2");
             ServiceQtDBus *srv = qobject_cast<ServiceQtDBus *>(serviceObj);
             if (srv) {
                 srv->qDbusConnection().send(reply);
@@ -215,10 +215,10 @@ int QTDBusHook(const QString &baseService, const QDBusMessage &msg)
     //        arguments << true << "sdvvv";
 
     //        QDBusMessage reply =
-    //        msg.createErrorReply("com.deepin.services.Nooooooo", "The method
+    //        msg.createErrorReply("com.lingmo.services.Nooooooo", "The method
     //        call 'Register()' is not supported");
     //        QDBusConnection::connectToBus(QDBusConnection::SessionBus,
-    //        "org.deepin.services.demo2").send(reply);
+    //        "org.lingmo.services.demo2").send(reply);
     //    }
 }
 

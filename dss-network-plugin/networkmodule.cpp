@@ -23,8 +23,8 @@
 #define NETWORK_KEY "network-item-key"
 
 static QString networkService = "org.deepin.dde.Network1";
-static QString networkPath = "/org/deepin/service/SystemNetwork";
-static QString networkInterface = "org.deepin.service.SystemNetwork";
+static QString networkPath = "/org/lingmo/service/SystemNetwork";
+static QString networkInterface = "org.lingmo.service.SystemNetwork";
 
 const int CONTENT_SPACING = 10;
 
@@ -50,7 +50,7 @@ NetworkModule::NetworkModule(QObject *parent)
     m_manager = new NetManager(flags, this);
     if (m_isLockModel) {
         m_manager->setServerKey("lock");
-        QDBusConnection::sessionBus().connect("com.deepin.dde.lockFront", "/com/deepin/dde/lockFront", "com.deepin.dde.lockFront", "Visible", this, SLOT(updateLockScreenStatus(bool)));
+        QDBusConnection::sessionBus().connect("com.lingmo.lockFront", "/com/lingmo/lockFront", "com.lingmo.lockFront", "Visible", this, SLOT(updateLockScreenStatus(bool)));
         connect(m_manager,
                 &NetManager::networkNotify,
                 this,
@@ -61,9 +61,9 @@ NetworkModule::NetworkModule(QObject *parent)
                     QDBusConnection::sessionBus().callWithCallback(notify, this, SLOT(onNotify(uint)));
                 });
     } else {
-        QDBusMessage lock = QDBusMessage::createMethodCall("com.deepin.dde.LockService", "/com/deepin/dde/LockService", "com.deepin.dde.LockService", "CurrentUser");
+        QDBusMessage lock = QDBusMessage::createMethodCall("com.lingmo.LockService", "/com/lingmo/LockService", "com.lingmo.LockService", "CurrentUser");
         QDBusConnection::systemBus().callWithCallback(lock, this, SLOT(onUserChanged(QString)));
-        QDBusConnection::systemBus().connect("com.deepin.dde.LockService", "/com/deepin/dde/LockService", "com.deepin.dde.LockService", "UserChanged", this, SLOT(onUserChanged(QString)));
+        QDBusConnection::systemBus().connect("com.lingmo.LockService", "/com/lingmo/LockService", "com.lingmo.LockService", "UserChanged", this, SLOT(onUserChanged(QString)));
 
         connect(m_manager, &NetManager::networkNotify, this, [](const QString &inAppName, int replacesId, const QString &appIcon, const QString &summary, const QString &body, const QStringList &actions, const QVariantMap &hints, int expireTimeout) {
             NotificationManager::Notify(appIcon, body);
@@ -150,7 +150,7 @@ void NetworkModule::onUserChanged(const QString &json)
     if (!doc.isObject())
         return;
     int uid = doc.object().value("Uid").toInt();
-    QDBusInterface user("org.deepin.dde.Accounts1", QString("/org/deepin/dde/Accounts1/User%1").arg(uid), "org.deepin.dde.Accounts1.User", QDBusConnection::systemBus());
+    QDBusInterface user("org.lingmo.Accounts1", QString("/org/lingmo/Accounts1/User%1").arg(uid), "org.lingmo.Accounts1.User", QDBusConnection::systemBus());
     installTranslator(user.property("Locale").toString().split(".").first());
     Q_EMIT userChanged();
 }

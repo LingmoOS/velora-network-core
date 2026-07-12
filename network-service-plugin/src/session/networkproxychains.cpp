@@ -27,7 +27,7 @@ NetworkProxyChains::NetworkProxyChains(QDBusConnection &dbusConnection, NetworkS
     , m_enable(false)
     , m_port(0)
     , m_networkStateHandler(networkStateHandler)
-    , m_appProxy(new QDBusInterface("org.deepin.dde.NetworkProxy1", "/org/deepin/dde/NetworkProxy1/App", "org.deepin.dde.NetworkProxy1.App", QDBusConnection::systemBus(), this))
+    , m_appProxy(new QDBusInterface("org.lingmo.NetworkProxy1", "/org/lingmo/NetworkProxy1/App", "org.lingmo.NetworkProxy1.App", QDBusConnection::systemBus(), this))
 {
     init();
 }
@@ -126,7 +126,7 @@ void NetworkProxyChains::init()
 void NetworkProxyChains::emitPropertyChanged(const QString &prop, QVariant value)
 {
 
-    QDBusMessage msg = QDBusMessage::createSignal("/org/deepin/dde/Network1/ProxyChains", "org.freedesktop.DBus.Properties", "PropertiesChanged");
+    QDBusMessage msg = QDBusMessage::createSignal("/org/lingmo/Network1/ProxyChains", "org.freedesktop.DBus.Properties", "PropertiesChanged");
     msg << "org.deepin.dde.Network1.ProxyChains" << QVariantMap({ { prop, value } }) << QStringList();
     QDBusConnection::sessionBus().asyncCall(msg);
 }

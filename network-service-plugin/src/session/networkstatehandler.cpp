@@ -74,12 +74,12 @@ NetworkStateHandler::NetworkStateHandler(QObject *parent)
     connect(m_delayShowWifiOSD, &QTimer::timeout, this, &NetworkStateHandler::delayShowWifiOSD);
     connect(m_resetWifiOSDEnableTimer, &QTimer::timeout, this, &NetworkStateHandler::resetWifiOSDEnable);
     connect(SettingConfig::instance(), &SettingConfig::resetWifiOSDEnableTimeoutChanged, this, &NetworkStateHandler::updateOSDTimer);
-    QDBusConnection::systemBus().connect("org.deepin.dde.Network1", "/org/deepin/dde/Network1", "org.deepin.dde.Network1", "DeviceEnabled", this, SLOT(onDeviceEnabled(QDBusObjectPath, bool)));
+    QDBusConnection::systemBus().connect("org.lingmo.Network1", "/org/lingmo/Network1", "org.lingmo.Network1", "DeviceEnabled", this, SLOT(onDeviceEnabled(QDBusObjectPath, bool)));
     QDBusConnection::systemBus().connect("org.freedesktop.NetworkManager", "", "org.freedesktop.NetworkManager.VPN.Connection", "VpnStateChanged", this, SLOT(onVpnStateChanged(QDBusMessage)));
-    QDBusConnection::systemBus().connect("org.deepin.dde.AirplaneMode1", "/org/deepin/dde/AirplaneMode1", DBUS_PROPERTIES_IFACE, "PropertiesChanged", this, SLOT(onAirplaneModePropertiesChanged(QString, QVariantMap, QStringList)));
-    QDBusConnection::sessionBus().connect("org.deepin.dde.Notification1", "/org/freedesktop/Notifications", "org.deepin.dde.Notification1", "NotificationClosed", this, SLOT(onNotificationClosed(uint, uint)));
+    QDBusConnection::systemBus().connect("org.lingmo.AirplaneMode1", "/org/lingmo/AirplaneMode1", DBUS_PROPERTIES_IFACE, "PropertiesChanged", this, SLOT(onAirplaneModePropertiesChanged(QString, QVariantMap, QStringList)));
+    QDBusConnection::sessionBus().connect("org.lingmo.Notification1", "/org/freedesktop/Notifications", "org.lingmo.Notification1", "NotificationClosed", this, SLOT(onNotificationClosed(uint, uint)));
     // 迁移dde-daemon/session/power1/sleep_inhibit.go ConnectHandleForSleep处理
-    QDBusConnection::systemBus().connect("org.deepin.dde.Daemon1", "/org/deepin/dde/Daemon1", "org.deepin.dde.Daemon1", "HandleForSleep", this, SLOT(onHandleForSleep(bool)));
+    QDBusConnection::systemBus().connect("org.lingmo.Daemon1", "/org/lingmo/Daemon1", "org.lingmo.Daemon1", "HandleForSleep", this, SLOT(onHandleForSleep(bool)));
     QDBusMessage message = QDBusMessage::createMethodCall("org.freedesktop.DBus", "/org/freedesktop/DBus", "org.freedesktop.DBus", "GetNameOwner");
     message << "org.freedesktop.NetworkManager";
     QDBusConnection::systemBus().callWithCallback(message, this, SLOT(init()));
@@ -609,7 +609,7 @@ bool NetworkStateHandler::isDeviceTypeValid(NetworkManager::Device::Type devType
 
 void NetworkStateHandler::queryDeviceEnabled(const QString &path)
 {
-    QDBusMessage msg = QDBusMessage::createMethodCall("org.deepin.dde.Network1", "/org/deepin/dde/Network1", "org.deepin.dde.Network1", "IsDeviceEnabled");
+    QDBusMessage msg = QDBusMessage::createMethodCall("org.lingmo.Network1", "/org/lingmo/Network1", "org.lingmo.Network1", "IsDeviceEnabled");
     msg << path;
     QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(QDBusConnection::systemBus().asyncCall(msg), this);
     connect(watcher, &QDBusPendingCallWatcher::finished, this, [path, this](QDBusPendingCallWatcher *w) {
@@ -728,7 +728,7 @@ void NetworkStateHandler::onAirplaneModePropertiesChanged(const QString &, const
 void NetworkStateHandler::showOSD(const QString &signal)
 {
     qCDebug(DSM()) << "show OSD" << signal;
-    QDBusMessage msg = QDBusMessage::createMethodCall("org.deepin.dde.Osd1", "/org/deepin/dde/shell/osd", "org.deepin.dde.shell.osd", "ShowOSD");
+    QDBusMessage msg = QDBusMessage::createMethodCall("org.lingmo.Osd1", "/org/lingmo/shell/osd", "org.lingmo.shell.osd", "ShowOSD");
     msg << signal;
     QDBusConnection::sessionBus().asyncCall(msg);
 }

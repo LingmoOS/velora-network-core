@@ -12,7 +12,7 @@
 
 static const QLoggingCategory &DSM()
 {
-    static const QLoggingCategory category((geteuid() == 0 ? "org.deepin.deepin-service-manager.system.network" : "org.deepin.deepin-service-manager.session.network"));
+    static const QLoggingCategory category((geteuid() == 0 ? "org.lingmo.deepin-service-manager.system.network" : "org.lingmo.deepin-service-manager.session.network"));
     return category;
 }
 

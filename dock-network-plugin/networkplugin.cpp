@@ -119,7 +119,7 @@ void NetworkPlugin::init(PluginProxyInterface *proxyInter)
             });
     connect(m_netStatus, &NetStatus::hasDeviceChanged, this, &NetworkPlugin::refreshPluginItemsVisible);
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged, this, &NetworkPlugin::updateIconColor);
-    QDBusConnection::sessionBus().connect("org.deepin.dde.LockFront1", "/org/deepin/dde/LockFront1", "org.deepin.dde.LockFront1", "Visible", this, SLOT(updateLockScreenStatus(bool)));
+    QDBusConnection::sessionBus().connect("org.lingmo.LockFront1", "/org/lingmo/LockFront1", "org.lingmo.LockFront1", "Visible", this, SLOT(updateLockScreenStatus(bool)));
 }
 
 void NetworkPlugin::positionChanged(const Dock::Position position)

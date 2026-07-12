@@ -53,13 +53,13 @@ QObject *ServiceFactory::createServiceObject(bool isSystem)
     if (isSystem) {
         auto obj = new network::systemservice::SystemService(new network::systemservice::SystemContainer(this), this);
         QDBusConnection::RegisterOptions opts = QDBusConnection::ExportAllSlots | QDBusConnection::ExportAllSignals | QDBusConnection::ExportAllProperties;
-        m_dbusConnection->registerObject("/org/deepin/service/SystemNetwork", obj, opts);
+        m_dbusConnection->registerObject("/org/lingmo/service/SystemNetwork", obj, opts);
     } else {
         auto obj = new network::sessionservice::SessionService(new network::sessionservice::SessionContainer(this), this);
     }
 
     if (isSystem) {
-        bool ret = QDBusConnection::systemBus().registerService("org.deepin.dde.Network10");
+        bool ret = QDBusConnection::systemBus().registerService("org.lingmo.Network10");
         network::systemservice::NetworkDBus *networkDBus = new network::systemservice::NetworkDBus(*m_dbusConnection, this);
         QDBusConnection::RegisterOptions opts = QDBusConnection::ExportAllSlots | QDBusConnection::ExportAllSignals | QDBusConnection::ExportAllProperties;
         return networkDBus;
@@ -69,7 +69,7 @@ QObject *ServiceFactory::createServiceObject(bool isSystem)
         network::sessionservice::NetworkProxy *networkProxy = new network::sessionservice::NetworkProxy(*m_dbusConnection, stateHandler, this);
         QDBusConnection::RegisterOptions opts = QDBusConnection::ExportAllSlots | QDBusConnection::ExportAllSignals | QDBusConnection::ExportAllProperties;
         network::sessionservice::NetworkProxyChains *networkProxyChains = new network::sessionservice::NetworkProxyChains(*m_dbusConnection, stateHandler, this);
-        m_dbusConnection->registerObject("/org/deepin/dde/Network1/ProxyChains", networkProxyChains, opts);
+        m_dbusConnection->registerObject("/org/lingmo/Network1/ProxyChains", networkProxyChains, opts);
         return networkProxy;
     }
 }

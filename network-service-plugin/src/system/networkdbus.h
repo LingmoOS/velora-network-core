@@ -10,9 +10,9 @@
 
 namespace network {
 namespace systemservice {
-const QString NETWORK_SYSTEM_DAEMON_SERVICE = "org.deepin.dde.Network1";
-const QString NETWORK_SYSTEM_DAEMON_PATH = "/org/deepin/dde/Network1";
-#define NETWORK_SYSTEM_DAEMON_INTERFACE_STRING "org.deepin.dde.Network1"
+const QString NETWORK_SYSTEM_DAEMON_SERVICE = "org.lingmo.Network1";
+const QString NETWORK_SYSTEM_DAEMON_PATH = "/org/lingmo/Network1";
+#define NETWORK_SYSTEM_DAEMON_INTERFACE_STRING "org.lingmo.Network1"
 const QString NETWORK_SYSTEM_DAEMON_INTERFACE = NETWORK_SYSTEM_DAEMON_INTERFACE_STRING;
 
 class NetworkThread;

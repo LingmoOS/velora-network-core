@@ -17,12 +17,12 @@ class SystemContainer;
 class SystemService : public QObject
 {
     Q_OBJECT
-    Q_CLASSINFO("D-Bus Interface", "org.deepin.service.SystemNetwork")
+    Q_CLASSINFO("D-Bus Interface", "org.lingmo.service.SystemNetwork")
     // 1, Qtdbus会自动导出改类的dbus接口
     // 2，添加了"D-Bus Introspection"后，可以指定需要导出到dbus的接口
     // 3，"D-Bus Introspection"可不添加，默认导出所有
     //    Q_CLASSINFO("D-Bus Introspection", ""
-    //"  <interface name=\"com.deepin.service.SystemNetwork\">\n"
+    //"  <interface name=\"com.lingmo.service.SystemNetwork\">\n"
     //"    <method name=\"IpConflicted\">\n"
     //"      <arg direction=\"out\" type=\"b\"/>\n"
     //"    </method>\n"

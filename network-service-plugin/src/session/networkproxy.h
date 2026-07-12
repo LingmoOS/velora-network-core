@@ -18,9 +18,9 @@ class NetworkStateHandler;
 class NetworkProxy : public QObject, protected QDBusContext
 {
     Q_OBJECT
-    Q_CLASSINFO("D-Bus Interface", "org.deepin.dde.Network1")
+    Q_CLASSINFO("D-Bus Interface", "org.lingmo.Network1")
     Q_CLASSINFO("D-Bus Introspection",
-                "<interface name='org.deepin.dde.Network1'>\n"
+                "<interface name='org.lingmo.Network1'>\n"
                 "    <method name='GetProxyMethod'>\n"
                 "        <arg name='proxyMode' type='s' direction='out'></arg>\n"
                 "    </method>\n"

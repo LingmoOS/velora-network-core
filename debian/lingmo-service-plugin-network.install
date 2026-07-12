@@ -1,0 +1,7 @@
+/usr/share/lingmo-service-manager/system/plugin-system-network.json
+/usr/share/lingmo-service-manager/user/plugin-session-network.json
+/usr/share/dbus-1/system.d/*.conf
+/usr/lib/*/lingmo-service-manager/libnetwork-service.so
+/usr/share/lingmo-service-manager/network-service/translations
+/usr/lib/deepin-daemon/dde-network-secret-dialog
+/etc/NetworkManager

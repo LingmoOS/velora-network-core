@@ -233,7 +233,7 @@ const QString HotspotPlugin::itemCommand(const QString &itemKey) {
       return {};
     }
   }
-  return QString("dbus-send --print-reply --dest=org.deepin.dde.ControlCenter1 /org/deepin/dde/ControlCenter1 org.deepin.dde.ControlCenter1.ShowPage string:network/personalHotspot");
+  return QString("dbus-send --print-reply --dest=org.lingmo.ControlCenter1 /org/lingmo/ControlCenter1 org.lingmo.ControlCenter1.ShowPage string:network/personalHotspot");
 }
 
 QWidget *HotspotPlugin::itemWidget(const QString &itemKey) {
@@ -377,8 +377,8 @@ void HotspotPlugin::onQuickPanelClicked(){
         }
         qInfo() << "no hotspot connection exists";
         DDBusSender()
-            .service("org.deepin.dde.ControlCenter1")
-            .interface("org.deepin.dde.ControlCenter1")
+            .service("org.lingmo.ControlCenter1")
+            .interface("org.lingmo.ControlCenter1")
             .path("/org/deepin/dde/ControlCenter1")
             .method(QString("ShowPage"))
             .arg(QString("network/personalHotspot"))

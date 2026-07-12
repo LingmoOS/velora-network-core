@@ -17,8 +17,8 @@
 using namespace network::sessionservice;
 
 static QString networkService = "org.deepin.dde.Network1";
-static QString networkPath = "/org/deepin/service/SystemNetwork";
-static QString networkInterface = "org.deepin.service.SystemNetwork";
+static QString networkPath = "/org/lingmo/service/SystemNetwork";
+static QString networkInterface = "org.lingmo.service.SystemNetwork";
 
 SessionContainer::SessionContainer(QObject *parent)
     : QObject (parent)
@@ -43,14 +43,14 @@ void SessionContainer::initConnection()
     QDBusConnection::systemBus().connect(networkService, networkPath, networkInterface, "IpConflictChanged", this, SLOT(onIPConflictChanged(const QString &, const QString &, bool)));
     QDBusConnection::systemBus().connect(networkService, networkPath, networkInterface, "PortalDetected", this, SLOT(onPortalDetected(const QString &)));
     // 当系统代理发生变化的时候需要主动调用SystemNetwork服务的检查网络连通性的接口
-    QDBusConnection::sessionBus().connect("org.deepin.dde.Network1", "/org/deepin/dde/Network1", "org.deepin.dde.Network1", "ProxyMethodChanged", this, SLOT(onProxyMethodChanged(const QString &)));
+    QDBusConnection::sessionBus().connect("org.lingmo.Network1", "/org/lingmo/Network1", "org.lingmo.Network1", "ProxyMethodChanged", this, SLOT(onProxyMethodChanged(const QString &)));
     connect(m_desktopMonitor, &DesktopMonitor::desktopChanged, this, &SessionContainer::onDesktopChanged);
 }
 
 void SessionContainer::checkPortalUrl()
 {
     // 检测初始化的状态是否为门户认证，这种情况下需要先打开Url
-    QDBusInterface dbusInter("org.deepin.service.SystemNetwork", "/org/deepin/service/SystemNetwork", "org.deepin.service.SystemNetwork", QDBusConnection::systemBus());
+    QDBusInterface dbusInter("org.lingmo.service.SystemNetwork", "/org/lingmo/service/SystemNetwork", "org.lingmo.service.SystemNetwork", QDBusConnection::systemBus());
     network::service::Connectivity connectivity = static_cast<network::service::Connectivity>(dbusInter.property("Connectivity").toInt());
     if (connectivity == network::service::Connectivity::Portal) {
         // 获取需要认证的网站的信息，并打开网页
@@ -115,7 +115,7 @@ void SessionContainer::onProxyMethodChanged(const QString &method)
 {
     Q_UNUSED(method);
 
-    QDBusInterface dbusInter("org.deepin.service.SystemNetwork", "/org/deepin/service/SystemNetwork", "org.deepin.service.SystemNetwork", QDBusConnection::systemBus());
+    QDBusInterface dbusInter("org.lingmo.service.SystemNetwork", "/org/lingmo/service/SystemNetwork", "org.lingmo.service.SystemNetwork", QDBusConnection::systemBus());
     QDBusPendingCall callReply = dbusInter.asyncCall("CheckConnectivity");
     callReply.waitForFinished();
 }

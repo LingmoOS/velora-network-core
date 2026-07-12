@@ -14,7 +14,7 @@ class SessionContainer;
 class SessionService : public QObject
 {
     Q_OBJECT
-    Q_CLASSINFO("D-Bus Interface", "org.deepin.service.SessionNetwork")
+    Q_CLASSINFO("D-Bus Interface", "org.lingmo.service.SessionNetwork")
 
 public:
     explicit SessionService(SessionContainer *container, QObject *parent = nullptr);

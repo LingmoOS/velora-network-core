@@ -17,7 +17,7 @@
 #include <QtDBus/QtDBus>
 
 /*
- * Proxy class for interface com.deepin.daemon.Network.ProxyChains
+ * Proxy class for interface com.lingmo.daemon.Network.ProxyChains
  */
 class __ProxyChainsPrivate;
 class ProxyChains : public Dtk::Core::DDBusInterface
@@ -26,7 +26,7 @@ class ProxyChains : public Dtk::Core::DDBusInterface
 
 public:
     static inline const char *staticInterfaceName()
-    { return "org.deepin.dde.Network1.ProxyChains"; }
+    { return "org.lingmo.Network1.ProxyChains"; }
 
 public:
     explicit ProxyChains(const QString &service, const QString &path, const QDBusConnection &connection, QObject *parent = 0);
