@@ -1,4 +1,4 @@
-velora-network-core (2.0.90.lingmo.1) unstable; urgency=medium
+lingmo-network-core (2.0.90.lingmo.1) unstable; urgency=medium
 
   * Lingmo namespace migration.
 
