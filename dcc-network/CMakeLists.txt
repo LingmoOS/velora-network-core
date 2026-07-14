@@ -32,6 +32,12 @@ find_package(DdeControlCenter REQUIRED)
 find_package(Dtk6 COMPONENTS Core REQUIRED)
 find_package(PkgConfig REQUIRED)
 find_package(KF6NetworkManagerQt REQUIRED)
+
+# DdeControlCenterConfig.cmake still exports legacy DDE installation paths.
+# Override them locally so this externally built plugin is installed beneath
+# the Lingmo control-center roots used by the Debian package manifest.
+set(DDE_CONTROL_CENTER_PLUGIN_INSTALL_DIR "${CMAKE_INSTALL_FULL_LIBDIR}/lingmo-control-center/modules")
+set(DDE_CONTROL_CENTER_TRANSLATION_INSTALL_DIR "${CMAKE_INSTALL_FULL_DATAROOTDIR}/lingmo-control-center/translations")
 #pkg_check_modules(DDE-Network-Core REQUIRED dde-network-core)
 
 

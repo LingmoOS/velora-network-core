@@ -1,3 +1,9 @@
+lingmo-network-core (2.0.90.lingmo.4) unstable; urgency=medium
+
+  * Install the control-center network plugin under Lingmo paths.
+
+ -- Lingmo OS Team <team@lingmo.org>  Tue, 14 Jul 2026 19:41:25 +0800
+
 lingmo-network-core (2.0.90.lingmo.3) unstable; urgency=medium
 
   * Correct Debian changelog trailer syntax for source package builds.
