@@ -1,8 +1,14 @@
+lingmo-network-core (2.0.90.lingmo.3) unstable; urgency=medium
+
+  * Correct Debian changelog trailer syntax for source package builds.
+
+ -- Lingmo OS Team <team@lingmo.org>  Tue, 14 Jul 2026 19:27:26 +0800
+
 lingmo-network-core (2.0.90.lingmo.2) unstable; urgency=medium
 
   * Fix Lingmo library names and network component installation paths.
 
- -- Lingmo OS Team <team@lingmo.org>  Tue, 14 Jul 2026 19:21:31 +08:00
+ -- Lingmo OS Team <team@lingmo.org>  Tue, 14 Jul 2026 19:21:31 +0800
 
 lingmo-network-core (2.0.90.lingmo.1) unstable; urgency=medium
 
