@@ -58,7 +58,7 @@ target_include_directories(${PLUGIN_NAME} PUBLIC
     operation
     ${KF5_QT_INCLUDE_DIRS}
     ${NETINTERFACEINCLUDE}
-    ${DDE-Network-Core_INCLUDE_DIRS}
+    ${LINGMO_NETWORK_CORE_INCLUDE_DIRS}
 )
 # 设置目标要使用的链接库
 # 变量 ${DtkWidget_LIBRARIES} 和 ${Qt5Widgets_LIBRARIES} 是在前面执行 find_package 命令时引入的
@@ -71,11 +71,11 @@ target_link_libraries(${PLUGIN_NAME} PRIVATE
     Qt5::DBus
     Dde::DCCWidget
     Dde::DCCInterface
-    ${DDE-Network-Core_LIBRARIES}
+    ${LINGMO_NETWORK_CORE_LIBRARIES}
 )
 
 # 设置执行 make install 时哪个目标应该被 install 到哪个位置
-install(TARGETS ${PLUGIN_NAME} LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}/dde-control-center/modules)
+install(TARGETS ${PLUGIN_NAME} LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}/lingmo-control-center/modules)
 
 # 安装 .qm 文件
-install(FILES ${QM_FILES} DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/dde-control-center/translations)
+install(FILES ${QM_FILES} DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/lingmo-control-center/translations)

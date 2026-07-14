@@ -47,5 +47,5 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     ${GTEST_LIBRARIES}
     -lpthread
     -lm
-    dde-network-core6
+    lingmo-network-core6
 )

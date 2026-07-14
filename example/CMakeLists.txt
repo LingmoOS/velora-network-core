@@ -15,8 +15,8 @@ if (CMAKE_BUILD_TYPE STREQUAL "Debug")
     ADD_DEFINITIONS(-DSERVICE_CONFIG_DIR="${CMAKE_BINARY_DIR}/share/")
     ADD_DEFINITIONS(-DSERVICE_LIB_DIR="${CMAKE_BINARY_DIR}/network-service-plugin/")
 else()
-    ADD_DEFINITIONS(-DSERVICE_CONFIG_DIR="${CMAKE_INSTALL_PREFIX}/share/deepin-service-manager/")
-    ADD_DEFINITIONS(-DSERVICE_LIB_DIR="${CMAKE_INSTALL_FULL_LIBDIR}/deepin-service-manager/")
+    ADD_DEFINITIONS(-DSERVICE_CONFIG_DIR="${CMAKE_INSTALL_PREFIX}/share/lingmo-service-manager/")
+    ADD_DEFINITIONS(-DSERVICE_LIB_DIR="${CMAKE_INSTALL_FULL_LIBDIR}/lingmo-service-manager/")
 endif()
 
 # 包含example自己的源文件
@@ -37,7 +37,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC
     Qt6::Network
     Qt6::Widgets
     KF6::NetworkManagerQt
-    ${DDE-Network-Core_INCLUDE_DIRS}
+    ${LINGMO_NETWORK_CORE_INCLUDE_DIRS}
 )
 
 target_link_libraries(${PROJECT_NAME} PRIVATE
@@ -46,5 +46,5 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     Qt6::Network
     Qt6::Widgets
     KF6::NetworkManagerQt
-    dde-network-core6
+    lingmo-network-core6
 )

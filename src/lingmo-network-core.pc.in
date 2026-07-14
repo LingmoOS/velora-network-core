@@ -1,10 +1,10 @@
 prefix=@CMAKE_INSTALL_PREFIX@
 exec_prefix=${prefix}
 libdir=@CMAKE_INSTALL_FULL_LIBDIR@
-includedir=@CMAKE_INSTALL_FULL_INCLUDEDIR@/libddenetworkcore
+includedir=@CMAKE_INSTALL_FULL_INCLUDEDIR@/liblingmonetworkcore
 
-Name: libddenetworkcore
+Name: liblingmonetworkcore
 Description: networkcore interface
 Version: @VERSION@
-Libs: -L${libdir} -ldde-network-core
+Libs: -L${libdir} -llingmo-network-core
 Cflags: -I${includedir}

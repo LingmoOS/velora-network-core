@@ -75,7 +75,7 @@ target_link_libraries(${PLUGIN_NAME} PRIVATE
     ${QT_NS}::Network
     ${DTK_NS}::Widget
     KF6::NetworkManagerQt
-    dde-network-core6
+    lingmo-network-core6
 )
 
 install(TARGETS ${PLUGIN_NAME} LIBRARY DESTINATION lib/dde-dock/plugins/system-trays)

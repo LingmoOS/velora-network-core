@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.23)
 
 set(VERSION "2.0.18" CACHE STRING "define project version")
-project(dde-network-core
+project(lingmo-network-core
   VERSION "2.0.18"
   DESCRIPTION "DDE Network Core"
   HOMEPAGE_URL "https://github.com/linuxdeepin/dde-network-core"
@@ -11,8 +11,8 @@ project(dde-network-core
 option(BUILD_TESTS "Build unit tests" OFF)
 option(BUILD_EXAMPLE "Build example programs" OFF)
 
-set(DDE-Network-Core_INCLUDE_DIRS  "${CMAKE_SOURCE_DIR}/src-old")
-set(DDE-Network-Core_LIBRARIES  dde-network-core)
+set(LINGMO_NETWORK_CORE_INCLUDE_DIRS  "${CMAKE_SOURCE_DIR}/src")
+set(LINGMO_NETWORK_CORE_LIBRARIES  lingmo-network-core6)
 
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(LibNM REQUIRED IMPORTED_TARGET libnm)

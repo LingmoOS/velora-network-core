@@ -15,7 +15,7 @@ file(GLOB_RECURSE SRCS "src/*.h" "src/*.cpp")
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
     ADD_DEFINITIONS(-DQM_FILES_DIR="${CMAKE_BINARY_DIR}/network-service-plugin")
 else()
-    ADD_DEFINITIONS(-DQM_FILES_DIR="/usr/share/deepin-service-manager/network-service/translations")
+    ADD_DEFINITIONS(-DQM_FILES_DIR="/usr/share/lingmo-service-manager/network-service/translations")
 endif()
 set(QT_NS 6)
 set(DTK_NS Dtk6)
@@ -72,9 +72,9 @@ if (CMAKE_BUILD_TYPE STREQUAL "Debug")
     EXECUTE_PROCESS(COMMAND cp -f ${CMAKE_CURRENT_SOURCE_DIR}/src/session/plugin-session-network.json ${CMAKE_BINARY_DIR}/share/user/)
 else()
     # just need this in your project
-    install(TARGETS ${BIN_NAME} DESTINATION ${CMAKE_INSTALL_LIBDIR}/deepin-service-manager/)
-    install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/system/plugin-system-network.json DESTINATION share/deepin-service-manager/system/)
-    install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/session/plugin-session-network.json DESTINATION share/deepin-service-manager/user/)
+    install(TARGETS ${BIN_NAME} DESTINATION ${CMAKE_INSTALL_LIBDIR}/lingmo-service-manager/)
+    install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/system/plugin-system-network.json DESTINATION share/lingmo-service-manager/system/)
+    install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/session/plugin-session-network.json DESTINATION share/lingmo-service-manager/user/)
 endif()
 
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/system/deepin.dde.daemon.conf DESTINATION /etc/NetworkManager/conf.d/)
@@ -91,7 +91,7 @@ qt_add_translations(${BIN_NAME}_language
 )
 add_custom_target(${BIN_NAME}_language ALL DEPENDS ${QM_FILES})
 # 安装.qm文件
-install(FILES ${QM_FILES} DESTINATION share/deepin-service-manager/network-service/translations/)
+install(FILES ${QM_FILES} DESTINATION share/lingmo-service-manager/network-service/translations/)
 
 add_subdirectory("dde-network-secret-dialog")
 

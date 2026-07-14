@@ -1,6 +1,6 @@
 
 set(VERSION "3.0.0" CACHE STRING "define project version")
-project(dde-network-core6)
+project(lingmo-network-core6)
 
 set(CMAKE_THREAD_LIBS_INIT "-lpthread")
 set(CMAKE_HAVE_THREADS_LIBRARY 1)
@@ -57,7 +57,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     udev
 )
 
-configure_file(dde-network-core.pc.in ../dde-network-core.pc @ONLY)
+configure_file(lingmo-network-core.pc.in ../lingmo-network-core.pc @ONLY)
 
 set(INTERFACEFILES
     impl/dslcontroller.h
@@ -74,13 +74,13 @@ set(INTERFACEFILES
 set_target_properties(${PROJECT_NAME} PROPERTIES
     VERSION ${CMAKE_PROJECT_VERSION}
     SOVERSION ${CMAKE_PROJECT_VERSION_MAJOR}
-    # OUTPUT_NAME dde-network-core
+    OUTPUT_NAME lingmo-network-core
     # EXPORT_NAME Network-Core
 )
 
 install(TARGETS ${PROJECT_NAME} EXPORT ${PROJECT_NAME}Targets LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
-install(FILES ${CMAKE_BINARY_DIR}/dde-network-core.pc DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
-install(FILES ${INTERFACEFILES} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/libddenetworkcore)
+install(FILES ${CMAKE_BINARY_DIR}/lingmo-network-core.pc DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+install(FILES ${INTERFACEFILES} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/liblingmonetworkcore)
 install(FILES ../config/org.deepin.dde.network.json DESTINATION ${CMAKE_INSTALL_DATADIR}/dsg/configs/org.deepin.dde.network)
 # 安装 .qm 文件
-install(FILES ${QM_FILES} DESTINATION ${CMAKE_INSTALL_DATADIR}/dde-network-core/translations)
+install(FILES ${QM_FILES} DESTINATION ${CMAKE_INSTALL_DATADIR}/lingmo-network-core/translations)

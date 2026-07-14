@@ -1,3 +1,9 @@
+lingmo-network-core (2.0.90.lingmo.2) unstable; urgency=medium
+
+  * Fix Lingmo library names and network component installation paths.
+
+ -- Lingmo OS Team <team@lingmo.org>  Tue, 14 Jul 2026 19:21:31 +08:00
+
 lingmo-network-core (2.0.90.lingmo.1) unstable; urgency=medium
 
   * Lingmo namespace migration.

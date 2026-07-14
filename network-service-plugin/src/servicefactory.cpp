@@ -30,7 +30,7 @@ ServiceFactory::ServiceFactory(bool isSystem, QDBusConnection *dbusConnection, Q
     , m_dbusConnection(dbusConnection)
 {
     QTranslator *translator = new QTranslator(this);
-    if (translator->load(QLocale::system(), "network-service-plugin", "_", "/usr/share/deepin-service-manager/network-service/translations")) {
+    if (translator->load(QLocale::system(), "network-service-plugin", "_", "/usr/share/lingmo-service-manager/network-service/translations")) {
         QCoreApplication::installTranslator(translator);
     }
 }

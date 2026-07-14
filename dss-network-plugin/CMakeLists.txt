@@ -65,11 +65,11 @@ target_link_libraries(${PLUGIN_NAME} PRIVATE
     Qt6::DBus
     Qt6::Network
     Qt6::Widgets
-    dde-network-core6
+    lingmo-network-core6
     KF6::NetworkManagerQt
 )
 
-install(TARGETS ${PLUGIN_NAME} LIBRARY DESTINATION lib/dde-session-shell/modules)
+install(TARGETS ${PLUGIN_NAME} LIBRARY DESTINATION lib/lingmo-session-shell/modules)
 # 安装 .qm 文件
 install(FILES ${QM_FILES} DESTINATION ${CMAKE_INSTALL_DATADIR}/${PLUGIN_NAME}/translations)
 

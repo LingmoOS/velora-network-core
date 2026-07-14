@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
     DLogManager::registerFileAppender();
 
     QTranslator translator;
-    if (translator.load(QLocale::system(), "network-service-plugin", "_", "/usr/share/deepin-service-manager/network-service/translations")) {
+    if (translator.load(QLocale::system(), "network-service-plugin", "_", "/usr/share/lingmo-service-manager/network-service/translations")) {
         app.installTranslator(&translator);
         app.loadTranslator();
     }

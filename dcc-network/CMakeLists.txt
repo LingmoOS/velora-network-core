@@ -63,7 +63,7 @@ set(DccNetwork_Libraries
         Dtk6::Core
         KF6::NetworkManagerQt
         Dde::Control-Center
-        dde-network-core6
+        lingmo-network-core6
 )
 
 target_link_libraries(${DccNetwork_Name} PRIVATE

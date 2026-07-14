@@ -56,7 +56,7 @@ target_link_libraries(${PLUGIN_NAME} PRIVATE
     ${Qt5DBus_LIBRARIES}
     ${KF5_QT_LIBRARIES}
     ${Qt5Network_LIBRARIES}
-    ${DDE-Network-Core_LIBRARIES}
+    ${LINGMO_NETWORK_CORE_LIBRARIES}
 )
 
 install(TARGETS ${PLUGIN_NAME} LIBRARY DESTINATION lib/dde-dock/plugins/quick-trays)

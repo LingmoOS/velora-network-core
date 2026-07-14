@@ -147,11 +147,11 @@ void NetworkController::installTranslator(const QString &locale)
     } else {
         m_translator = new QTranslator;
     }
-    if (m_translator->load(QLocale(localeName), "dde-network-core", "_", "/usr/share/dde-network-core/translations")) {
+    if (m_translator->load(QLocale(localeName), "lingmo-network-core", "_", "/usr/share/lingmo-network-core/translations")) {
         QCoreApplication::installTranslator(m_translator);
-        qCInfo(DNC()) << "Loaded translation file for dde-network-core:" << m_translator->filePath();
+        qCInfo(DNC()) << "Loaded translation file for lingmo-network-core:" << m_translator->filePath();
     } else {
-        qCWarning(DNC()) << "Failed to load translation file for dde-network-core";
+        qCWarning(DNC()) << "Failed to load translation file for lingmo-network-core";
         m_translator->deleteLater();
         m_translator = nullptr;
     }

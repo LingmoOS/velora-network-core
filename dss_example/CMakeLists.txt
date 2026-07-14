@@ -27,7 +27,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC
     Qt6::Network
     Qt6::Widgets
     KF6::NetworkManagerQt
-    ${DDE-Network-Core_INCLUDE_DIRS}
+    ${LINGMO_NETWORK_CORE_INCLUDE_DIRS}
 )
 
 target_link_libraries(${PROJECT_NAME} PRIVATE
@@ -37,5 +37,5 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     Qt6::Widgets
     KF6::NetworkManagerQt
     dss-network-plugin
-    dde-network-core6
+    lingmo-network-core6
 )
