@@ -1,3 +1,9 @@
+velora-network-core (2.0.90.lingmo.2) unstable; urgency=medium
+
+  * 侧边栏顺序调整：网络项 weight 20 -> 40（配合控制中心新的信息架构）
+
+ -- Lingmo OS Team <team@lingmo.org>  Thu, 15 Oct 2026 21:00:25 +0800
+
 velora-network-core (2.0.89.lingmo.2) unstable; urgency=medium
 
   * new release for Lingmo OS.
