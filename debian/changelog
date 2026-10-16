@@ -1,3 +1,9 @@
+velora-network-core (2.0.92.lingmo.2) unstable; urgency=medium
+
+  * fix: 侧栏网络图标改用可写的 icon 属性（iconSource 只读，会导致模块加载失败）
+
+ -- Lingmo OS Team <team@lingmo.org>  Fri, 16 Oct 2026 15:46:20 +0800
+
 velora-network-core (2.0.91.lingmo.2) unstable; urgency=medium
 
   * 侧栏网络图标改用 Tabler 双色 SVG（iconSource，随主题与选中态切换）

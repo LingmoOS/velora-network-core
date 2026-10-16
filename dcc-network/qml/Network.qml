@@ -14,9 +14,8 @@ DccObject {
     name: "network"
     parentName: "root"
     displayName: qsTr("Network")
-    icon: "dcc_network"
-    // 双色 SVG（Tabler, MIT）：实际变体由 delegate 按主题/选中态选择
-    iconSource: "file:///usr/share/dde-control-center/icons/sidebar/network-light.svg"
+    // DccObject 的 iconSource 是只读（由 icon 派生），这里必须用可写的 icon
+    icon: "file:///usr/share/dde-control-center/icons/sidebar/network-light.svg"
     weight: 40
     onShowPageFunChanged: showPage()
     onActive: function (cmdParam) {
